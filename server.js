@@ -11,7 +11,10 @@ connectDB();
 // //Init Middlew:are
 
 app.use(express.json({ extended: false }));
-app.get('/', (req, res) => res.send('API Running'));
+app.get('/', (req, res) =>{
+res.setHeader("Access-Control-Allow-Credentials","true")
+res.send('API Running'));
+}
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/auth', require('./routes/api/auth'));
 server.listen(process.env.PORT || 5000, () =>
